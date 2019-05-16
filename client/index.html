@@ -5,18 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/gibber.audio.lib@0.7.7/build/gibber.audio.lib.min.js"></script>
     <script src="./index.js"></script>
     <style>
         body {
             background-color: black;
+            font-family: 'Roboto', sans-serif;
         }
         #message {
             text-align: center;
             width: 100%;
             position: absolute;
             top: 50%;
-            margin-top: -36px;
+            margin-top: -86px;
+        }
+        #message p {
+            font-size: 32px;
+            color: white;
         }
         #message h1 {
             display: inline;
@@ -27,7 +33,9 @@
     </style>
 </head>
 <body>
-    <p>Send your messages to +447491163898 WHATSAPP number</p>
-    <div id="message"><h1></h1></div>
+    <div id="message">
+        <p>Send your WHATSAPP messages to +447491163898</p>
+        <h1></h1>
+    </div>
 </body>
 </html>
