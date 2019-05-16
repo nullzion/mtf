@@ -18,6 +18,6 @@ app.ws('/ws', (ws, req) => {
     ws.send('Hello');
 });
 
-app.listen(3000, () => {
+app.listen(process.argv[2], () => {
     console.log('Listening');
 });
