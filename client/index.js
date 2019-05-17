@@ -62,7 +62,7 @@ const webSocket = new WebSocket('ws://' + window.location.host + '/ws');
 webSocket.onmessage = function (event) {
     const emojis = event.data.match(rx);
     let notes;
-    if (emojis && emojis.indexOf('☹️') > -1) {
+    if (emojis && emojis.indexOf('🙁') > -1) {
         notes = event.data.split('').map(l => minorMapper[l]);
     } else {
         notes = event.data.split('').map(l => mapper[l]);
