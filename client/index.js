@@ -60,13 +60,16 @@ a = Synth2({ maxVoices:18, waveform:'Triangle', attack:ms(100), decay:ms(5000), 
 const webSocket = new WebSocket('ws://' + window.location.host + '/ws');
 
 webSocket.onmessage = function (event) {
-    const emojis = event.data.match(rx);
+    console.log(event);
+    const message = JSON.parse(event.data);
+    // const emojis = event.data.match(rx);
     let notes;
-    if (emojis && emojis.indexOf('🙁') > -1) {
-        notes = event.data.split('').map(l => minorMapper[l]);
-    } else {
-        notes = event.data.split('').map(l => mapper[l]);
-    }
+    // if (emojis && emojis.indexOf('🙁') > -1) {
+        // notes = event.data.text.split('').map(l => minorMapper[l]);
+    // } else {
+        notes = message.text.split('').map(l => mapper[l]);
+    // }
     a.play(notes, 1/8);
-    document.querySelector('#message h1').innerHTML = event.data;
+    
+    document.querySelector('#message h1').innerHTML = message.raw;
 }

@@ -13,10 +13,15 @@ app.post('/message', (req, res) => {
     const message = req.body.results[0];
     console.log(message);
     if (message.content) {
-        
-        expressWs.getWss().clients.forEach(c => c.send(emoji.unemojify(message.content.text)));
+        expressWs.getWss().clients.forEach(c => c.send(JSON.stringify({
+            raw: message.content.text,
+            text: emoji.unemojify(message.content.text)
+        })));
     } else {
-        expressWs.getWss().clients.forEach(c => c.send(emoji.unemojify(message.message.text)));
+        expressWs.getWss().clients.forEach(c => c.send(JSON.stringify({
+            raw: message.message.text,
+            text: emoji.unemojify(message.message.text)
+        })));
     }
     
     res.send('Ok');
@@ -24,7 +29,10 @@ app.post('/message', (req, res) => {
 
 app.ws('/ws', (ws, req) => {
     connections.push(ws);
-    ws.send('Yeehao');
+    ws.send(JSON.stringify({
+        raw: 'Hello',
+        text: 'Hello'
+    }));
 });
 
 app.listen(process.argv[2], () => {
