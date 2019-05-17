@@ -26,7 +26,7 @@ const mapper = {
     'x': 'f7',
     'y': 'g7',
     'z': 'b7',
-}message
+}
 
 const minorMapper = {
     'a': 'c4',
